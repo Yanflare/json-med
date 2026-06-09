@@ -1,4 +1,4 @@
-"""Tests for llm_jsonfix.parse."""
+"""Tests for json-med.parse."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ pydantic = pytest.importorskip("pydantic", reason="pydantic not installed")
 
 from pydantic import BaseModel, ValidationError  # noqa: E402
 
-from llm_jsonfix import RepairError, parse  # noqa: E402
+from json_med import RepairError, parse  # noqa: E402
 
 
 class User(BaseModel):

@@ -1,8 +1,8 @@
-"""Tests for llm_jsonfix.exceptions."""
+"""Tests for json-med.exceptions."""
 
 from __future__ import annotations
 
-from llm_jsonfix.exceptions import RepairError
+from json_med.exceptions import RepairError
 
 
 def test_repair_error_stores_original() -> None:

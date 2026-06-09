@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 
-from llm_jsonfix.exceptions import RepairError
+from json_med.exceptions import RepairError
 
 # ---------------------------------------------------------------------------
 # Internal helpers

@@ -1,4 +1,4 @@
-"""Tests for llm_jsonfix.repair."""
+"""Tests for json-med.repair."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ import json
 
 import pytest
 
-from llm_jsonfix import RepairError, repair
+from json_med import RepairError, repair
 from tests.fixtures.corpus import CORPUS
 
 # ------------------------------------------------------------------ corpus ---

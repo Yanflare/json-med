@@ -32,4 +32,4 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[dev]"
-      - run: pytest --cov=llm_jsonfix --cov-report=term-missing --cov-fail-under=80
+      - run: pytest --cov=json_med --cov-report=term-missing --cov-fail-under=80

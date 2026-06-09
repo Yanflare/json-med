@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "llm-jsonfix"
+name = "json-med"
 version = "0.1.0"
 description = "Repair malformed LLM JSON output — strips fences, fixes trailing commas, closes truncated structures, validates against Pydantic models."
 readme = "README.md"
@@ -35,13 +35,13 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Yanflare/llm-jsonfix"
-Repository = "https://github.com/Yanflare/llm-jsonfix"
-Issues = "https://github.com/Yanflare/llm-jsonfix/issues"
-Changelog = "https://github.com/Yanflare/llm-jsonfix/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Yanflare/json-med"
+Repository = "https://github.com/Yanflare/json-med"
+Issues = "https://github.com/Yanflare/json-med/issues"
+Changelog = "https://github.com/Yanflare/json-med/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/llm_jsonfix"]
+packages = ["src/json_med"]
 
 [tool.ruff]
 line-length = 100
@@ -57,7 +57,7 @@ python_version = "3.10"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=llm_jsonfix --cov-report=term-missing"
+addopts = "--cov=json_med --cov-report=term-missing"
 
 [tool.coverage.run]
-source = ["src/llm_jsonfix"]
+source = ["src/json_med"]

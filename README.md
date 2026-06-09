@@ -1,8 +1,8 @@
-# llm-jsonfix
+# json-med
 
-[![PyPI version](https://img.shields.io/pypi/v/llm-jsonfix.svg)](https://pypi.org/project/llm-jsonfix/)
-[![CI](https://github.com/Yanflare/llm-jsonfix/actions/workflows/ci.yml/badge.svg)](https://github.com/Yanflare/llm-jsonfix/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/pypi/pyversions/llm-jsonfix.svg)](https://pypi.org/project/llm-jsonfix/)
+[![PyPI version](https://img.shields.io/pypi/v/json-med.svg)](https://pypi.org/project/json-med/)
+[![CI](https://github.com/Yanflare/json-med/actions/workflows/ci.yml/badge.svg)](https://github.com/Yanflare/json-med/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/pypi/pyversions/json-med.svg)](https://pypi.org/project/json-med/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Repair malformed JSON from LLM responses. No required dependencies.
@@ -18,14 +18,14 @@ LLMs routinely return broken JSON:
 {'name': 'Alice', 'scores': [98, 87, 92,],
 ````
 
-`json.loads()` raises. Your pipeline breaks. `llm-jsonfix` fixes it.
+`json.loads()` raises. Your pipeline breaks. `json-med` fixes it.
 
 ## Install
 
 ````bash
-pip install llm-jsonfix
+pip install json-med
 # With Pydantic validation support:
-pip install "llm-jsonfix[pydantic]"
+pip install "json-med[pydantic]"
 ````
 
 ## Usage
@@ -33,7 +33,7 @@ pip install "llm-jsonfix[pydantic]"
 ### `repair()` — returns a valid JSON string
 
 ````python
-from llm_jsonfix import repair
+from json-med import repair
 
 raw = """```json
 {'name': 'Alice', 'scores': [98, 87, 92,],
@@ -47,7 +47,7 @@ fixed = repair(raw)
 
 ```python
 from pydantic import BaseModel
-from llm_jsonfix import parse
+from json-med import parse
 
 class User(BaseModel):
     name: str
@@ -70,7 +70,7 @@ user = parse(raw, User)
 ## Error handling
 
 ```python
-from llm_jsonfix import repair, RepairError
+from json-med import repair, RepairError
 
 try:
     result = repair("not json at all")

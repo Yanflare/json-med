@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from typing import Any, TypeVar
 
-from llm_jsonfix.repair import repair
+from json_med.repair import repair
 
 T = TypeVar("T")
 
@@ -39,7 +39,7 @@ def parse(text: str, model: type[T]) -> T:
         from pydantic import BaseModel
     except ImportError as exc:  # pragma: no cover
         raise ImportError(
-            "pydantic is required for parse(). Install it with: pip install llm-jsonfix[pydantic]"
+            "pydantic is required for parse(). Install it with: pip install json-med[pydantic]"
         ) from exc
 
     if not (isinstance(model, type) and issubclass(model, BaseModel)):

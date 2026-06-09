@@ -1,12 +1,12 @@
-# Contributing to llm-jsonfix
+# Contributing to json-med
 
 Thanks for your interest. Contributions are welcome.
 
 ## Setup
 
 `````bash
-git clone https://github.com/Yanflare/llm-jsonfix.git
-cd llm-jsonfix
+git clone https://github.com/Yanflare/json-med.git
+cd json-med
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
@@ -30,7 +30,7 @@ pytest                 # tests + coverage
 
 ## Repair strategy contributions
 
-New repair strategies belong in `src/llm_jsonfix/repair.py`. Each strategy should:
+New repair strategies belong in `src/json-med/repair.py`. Each strategy should:
 - Be a pure function (`str → str`)
 - Have its own test cases in `tests/test_repair.py`
 - Be documented with a clear docstring

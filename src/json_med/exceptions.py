@@ -1,4 +1,4 @@
-"""Exceptions raised by llm-jsonfix."""
+"""Exceptions raised by json-med."""
 
 from __future__ import annotations
 
