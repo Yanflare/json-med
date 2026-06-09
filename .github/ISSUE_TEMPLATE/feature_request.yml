@@ -1,0 +1,21 @@
+name: Feature Request
+description: Suggest a new repair strategy or feature
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Example input/output
+      render: python
