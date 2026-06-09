@@ -1,14 +1,11 @@
 name: Release
-
 on:
   push:
     tags:
       - "v*.*.*"
-
 permissions:
   contents: write
   id-token: write
-
 jobs:
   release:
     name: Build & publish to PyPI
@@ -16,20 +13,17 @@ jobs:
     environment: release
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: Install build tools
         run: pip install hatchling build
-
       - name: Build distribution
         run: python -m build
-
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-
+        with:
+          skip-existing: true
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
