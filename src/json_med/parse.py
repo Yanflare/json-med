@@ -94,16 +94,12 @@ def parse_array(text: str, model: type[T]) -> list[T]:
         ) from exc
 
     if not (isinstance(model, type) and issubclass(model, BaseModel)):
-        raise TypeError(
-            f"model must be a Pydantic BaseModel subclass, got {model!r}"
-        )
+        raise TypeError(f"model must be a Pydantic BaseModel subclass, got {model!r}")
 
     repaired = repair(text)
     data: Any = json.loads(repaired)
 
     if not isinstance(data, list):
-        raise TypeError(
-            f"Expected a JSON array at root, got {type(data).__name__}"
-        )
+        raise TypeError(f"Expected a JSON array at root, got {type(data).__name__}")
 
     return [model.model_validate(item) for item in data]

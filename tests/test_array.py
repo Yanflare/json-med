@@ -1,4 +1,5 @@
 """Tests for json-med.parse_array — Issue #6: first-class JSON array support."""
+
 from __future__ import annotations
 
 import pytest
