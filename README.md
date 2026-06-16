@@ -5,56 +5,57 @@
 [![Python](https://img.shields.io/pypi/pyversions/json-med.svg)](https://pypi.org/project/json-med/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Repair malformed JSON from LLM responses. No required dependencies.
-
----
-
 ## The problem
 
-LLMs routinely return broken JSON:
+LLM responses often come back wrapped in markdown fences, using single quotes, or with trailing
+commas. You lose the rest of the pipeline over one small formatting mistake that the model keeps
+repeating. `json-med` repairs it so your code can continue.
 
-`````text
-````json
-{'name': 'Alice', 'scores': [98, 87, 92,],
-````
-
-`json.loads()` raises. Your pipeline breaks. `json-med` fixes it.
+You could wrap `json.loads()` in a try/except. But in a real pipeline you do not want the whole
+thing to fail because one model response had a trailing comma. You want it to recover cleanly so
+the rest of your code keeps running.
 
 ## Install
 
-````bash
+`````bash
 pip install json-med
+
 # With Pydantic validation support:
 pip install "json-med[pydantic]"
-````
+`````
 
 ## Usage
 
 ### `repair()` — returns a valid JSON string
 
-````python
-from json-med import repair
+`````python
+from json_med import repair
 
 raw = """```json
-{'name': 'Alice', 'scores': [98, 87, 92,],
-```"""
+{'user': 'Alice', 'scores': [98, 87, 92,], 'active': True}
+````"""
 
 fixed = repair(raw)
-# '{"name": "Alice", "scores": [98, 87, 92]}'
-```
+# '{"user": "Alice", "scores": [98, 87, 92], "active": true}'
+````
 
 ### `parse()` — repair + Pydantic validation
 
-```python
+````python
 from pydantic import BaseModel
-from json-med import parse
+from json_med import parse
 
 class User(BaseModel):
-    name: str
+    user: str
     scores: list[int]
+    active: bool
+
+raw = """```json
+{'user': 'Alice', 'scores': [98, 87, 92,], 'active': True}
+```"""
 
 user = parse(raw, User)
-# User(name='Alice', scores=[98, 87, 92])
+# User(user='Alice', scores=[98, 87, 92], active=True)
 ```
 
 ## What gets repaired
@@ -70,7 +71,7 @@ user = parse(raw, User)
 ## Error handling
 
 ```python
-from json-med import repair, RepairError
+from json_med import repair, RepairError
 
 try:
     result = repair("not json at all")
